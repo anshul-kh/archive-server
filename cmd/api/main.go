@@ -23,9 +23,8 @@ func main() {
 
 	r := gin.Default()
 
-	// Add CORS middleware
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"}, // Allow all, or specify: []string{"http://localhost:3000"}
+		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -42,5 +41,5 @@ func main() {
 	r.POST("/exec", executionHandler)
 	r.GET("/job_result/:job_id", resultHandler)
 
-	r.Run()
+	r.Run(":7000")
 }
